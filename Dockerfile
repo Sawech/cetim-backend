@@ -26,14 +26,14 @@ FROM eclipse-temurin:17-jre-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy the jar from build stage and rename it to app.jar
-COPY --from=build /app/target/*.jar /app/app.jar
+# Copy the WAR file from build stage (will be labs-0.0.1-SNAPSHOT.war)
+COPY --from=build /app/target/*.war /app/app.war
 
 # Create uploads directory for file storage
 RUN mkdir -p /app/uploads
 
-# Expose port (Render will override this with $PORT env variable)
+# Expose port
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+# Run the WAR file as a standalone Spring Boot application
+ENTRYPOINT ["java", "-jar", "/app/app.war"]
