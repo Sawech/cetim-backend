@@ -26,8 +26,8 @@ FROM eclipse-temurin:17-jre-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy the jar from build stage
-COPY --from=build /app/target/*.jar app.jar
+# Copy the jar from build stage and rename it to app.jar
+COPY --from=build /app/target/*.jar /app/app.jar
 
 # Create uploads directory for file storage
 RUN mkdir -p /app/uploads
@@ -36,4 +36,4 @@ RUN mkdir -p /app/uploads
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
