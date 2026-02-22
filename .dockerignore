@@ -1,0 +1,34 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE
+.idea/
+*.iml
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Git
+.git/
+.gitignore
+
+# Deployment files
+Dockerfile
+.dockerignore
+render.yaml
+
+# Other
+uploads/
