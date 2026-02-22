@@ -8,6 +8,9 @@ WORKDIR /app
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
+# Fix permissions for mvnw
+RUN chmod +x ./mvnw
+
 # Download dependencies (this layer will be cached)
 RUN ./mvnw dependency:go-offline
 
